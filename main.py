@@ -17,7 +17,7 @@ from modules.question.question_module import make_question
 # ===============================
 # 공유 RUNNING 플래그
 # ===============================
-from modules.shared_flags import RUNNING
+import modules.shared_flags as flags
 
 # ===============================
 # 단일 카메라 스레드
@@ -300,6 +300,7 @@ def main():
             break
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
+            flags.RUNNING = False
             print("🔚 'q' pressed. Exiting.")
             break
 
@@ -308,9 +309,7 @@ def main():
     # ============================
     # 전체 스레드 종료
     # ============================
-    import modules.shared_flags as flags
     flags.RUNNING = False
-
     cv2.destroyAllWindows()
     print("🧹 Threads stopped.")
     return
