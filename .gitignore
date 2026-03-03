@@ -8,3 +8,4 @@ venv/
 # secrets
 key.json
 *.json
+exp_tmp.jpg
